@@ -1,3 +1,31 @@
 # get_next_line
- ・Calling your function get_next_line in a loop will then allow you to read the text available on a file descriptor one line at a time until the EOF. 
- 
+## 概要
+ファイルや標準入力から１行づつ文字列を読み込む関数  
+## 宣言
+```c
+int	get_next_line(int fd, char **line);
+```
+## 引数
+- ファイルディスクリプタ
+	```c
+	int fd
+	```
+- 読み込んだ文字列を入れる用のポインタ
+	```c
+	char **line
+	```
+## 返り値
+- 読み込んだ文字数
+##  使用方法
+使用する.cファイルの上部にインクルードしてください。
+```c
+#include get_next_line.h
+```
+- ### ファイル名から参照する場合
+	メインの使い道はこちらだと思います。
+	```c
+	int
+	char *get_line;
+
+	```
+- ### 標準入力から参照する場合
