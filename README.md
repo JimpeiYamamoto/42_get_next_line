@@ -15,17 +15,30 @@ int	get_next_line(int fd, char **line);
 	char **line
 	```
 ## 返り値
-- 読み込んだ文字数
+- 1 -> まだ行が残っている
+- -1 -> 最後の行を読み込んだ
 ##  使用方法
 使用する.cファイルの上部にインクルードしてください。
 ```c
 #include get_next_line.h
 ```
-- ### ファイル名から参照する場合
-	メインの使い道はこちらだと思います。
+- ### ファイル名から参照する
 	```c
-	int
-	char *get_line;
+	char	*get_line;
+	int		r;
+	int		fd;
 
+	fd = open('file_path', O_RDONLY);
+	r = 1;
+	while (r == 1)
+	{
+		r = get_next_line(fd, &get_line);
+		if (r == -1)
+			break;
+		/*
+		好きな処理
+		*/
+		free(get_line);
+	}
+	close(fd);
 	```
-- ### 標準入力から参照する場合
